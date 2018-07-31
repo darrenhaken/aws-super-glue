@@ -1,13 +1,14 @@
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const sassMiddleware = require('node-sass-middleware');
-const awsSetup = require('./config/awsSetup');
-awsSetup();
+const express = require('express'),
+  path = require('path'),
+  cookieParser = require('cookie-parser'),
+  logger = require('morgan'),
+  sassMiddleware = require('node-sass-middleware'),
+  awsSetup = require('./config/awsSetup');
 
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
+
+awsSetup();
 const app = express();
 
 app.use(logger('dev'));
