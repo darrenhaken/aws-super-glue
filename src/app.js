@@ -3,14 +3,14 @@ const express = require('express'),
   cookieParser = require('cookie-parser'),
   logger = require('morgan'),
   sassMiddleware = require('node-sass-middleware'),
-  awsSetup = require('./config/awsSetup');
+  {initAws} = require('./config/aws');
 
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
 
-awsSetup();
-const app = express();
+initAws();
 
+const app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
